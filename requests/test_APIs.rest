@@ -1,0 +1,11 @@
+GET http://localhost:3001/api/blogs
+###
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Website Setup Essentials",
+    "author": "PRIM4T",
+    "url": "https://dev.to/prim4t/website-setup-essentials-447o",
+    "likes": 3
+}
