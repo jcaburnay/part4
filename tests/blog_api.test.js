@@ -73,6 +73,47 @@ describe('addition of a new blog', () => {
     const newlyAddedBlog = blogs.find(blog => blog.title === 'New Blog - Full Stack Open 2022 Part 4')
     expect(newlyAddedBlog.likes).toBe(0)
   })
+
+  // Both title and url properties are not included in the creation of a new blog
+  test('fails with status code 400 if both title and url are missing', async () => {
+    const newBlog = {
+      author: 'Jonathan Caburnay'
+    }
+
+    await api.post('/api/blogs').send(newBlog).expect(400)
+
+    const blogs = await helper.blogsInDb()
+
+    expect(blogs).toHaveLength(helper.initialBlogs.length)
+  })
+
+  // URL property is not included in the creation of a new blog
+  test('fails with status code 400 if url property is missing', async () => {
+    const newBlog = {
+      title: 'Monday Blog - FOS2022',
+      author: 'Jonathan Caburnay'
+    }
+
+    await api.post('/api/blogs').send(newBlog).expect(400)
+
+    const blogs = await helper.blogsInDb()
+
+    expect(blogs).toHaveLength(helper.initialBlogs.length)
+  })
+
+  // Title property is not included in the creation of a new blog
+  test('fails with status code 400 if title property is missing', async () => {
+    const newBlog = {
+      author: 'Jonathan Caburnay',
+      url: 'https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-8-4-12'
+    }
+
+    await api.post('/api/blogs').send(newBlog).expect(400)
+
+    const blogs = await helper.blogsInDb()
+
+    expect(blogs).toHaveLength(helper.initialBlogs.length)
+  })
 })
 
 afterAll(() => {
