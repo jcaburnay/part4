@@ -4,8 +4,7 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Me, a former physicist, just launched my first project using Elixir and Phoenix.",
-    "author": "Felipe Lincoln",
-    "url": "https://dev.to/felipelincoln/me-a-former-physicist-just-launched-my-first-project-using-elixir-and-phoenix-8k",
-    "likes": 2
+    "title": "New Blog - Full Stack Open 2022 Part 4",
+    "author": "Jonathan Caburnay",
+    "url": "https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-8-4-12"
 }
