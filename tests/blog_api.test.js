@@ -116,6 +116,42 @@ describe('addition of a new blog', () => {
   })
 })
 
+describe('deletion of a blog', () => {
+  test('succeeds with status code 204 if id is valid', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToDelete = blogsAtStart[0]
+
+    await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204)
+
+    const blogsAtEnd = await helper.blogsInDb()
+
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length - 1)
+
+    const blogTitles = blogsAtEnd.map((blog) => blog.title)
+
+    expect(blogTitles).not.toContain(blogToDelete.title)
+  })
+})
+
+describe('updating a blog', () => {
+  test('succeeds with status code 200 if id is valid', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = blogsAtStart[0]
+    blogToUpdate.likes = 2022
+
+    await api.put(`/api/blogs/${blogToUpdate.id}`).send(blogToUpdate).expect(200)
+
+    const allBlogs = await helper.blogsInDb()
+    const updatedBlog = allBlogs.find((blog) => blog.id === blogToUpdate.id)
+    expect(updatedBlog.likes).toBe(2022)
+  })
+
+  test('fails with status code 404 if id does not exist', async () => {
+    const blogId = '5193ec66d6gzbe9360f71c41'
+    await api.put(`/api/blogs/${blogId}`).send({ likes: 5 }).expect(404)
+  })
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })

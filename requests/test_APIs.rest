@@ -8,3 +8,10 @@ Content-Type: application/json
     "author": "Jonathan Caburnay",
     "url": "https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-8-4-12"
 }
+###
+PUT http://localhost:3001/api/blogs/6282508d7ee58abc1211aadf
+Content-Type: application/json
+
+{
+    "likes": 2022
+}
