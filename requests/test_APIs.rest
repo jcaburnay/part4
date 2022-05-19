@@ -15,3 +15,12 @@ Content-Type: application/json
 {
     "likes": 2022
 }
+
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "username": "binong",
+    "name": "Jonathan Caburnay",
+    "password": "password123"
+}
