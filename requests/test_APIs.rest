@@ -15,12 +15,14 @@ Content-Type: application/json
 {
     "likes": 2022
 }
-
+###
 POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "binong",
+    "username": "bin",
     "name": "Jonathan Caburnay",
-    "password": "password123"
+    "password": "23"
 }
+###
+GET http://localhost:3001/api/users

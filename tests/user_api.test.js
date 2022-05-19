@@ -12,10 +12,9 @@ describe('when there is only one user in db', () => {
   beforeEach(async () => {
     await User.deleteMany({})
 
-    const passwordHash = await bcryptjs.hash('temppassword', 10)
-    const user = new User({ username: 'admin', name: 'Test User', passwordHash })
-
-    await user.save()
+    const userObjects = helper.initialUsers.map(user => new User(user))
+    const promiseArray = userObjects.map(blog => blog.save())
+    await Promise.all(promiseArray)
   })
 
   test('creation succeeds with a new username', async () => {
@@ -38,6 +37,38 @@ describe('when there is only one user in db', () => {
 
     const usernames = usersAtEnd.map(u => u.username)
     expect(usernames).toContain(newUser.username)
+  })
+
+  test('fails with status code 400 if username is invalid', async () => {
+    const newUser = {
+      username: 'be',
+      name: 'Jonathan Caburnay',
+      password: 'password123'
+    }
+
+    await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+
+    const usersAtEnd = await helper.usersInDb()
+    expect(usersAtEnd).toHaveLength(helper.initialUsers.length)
+  })
+
+  test('fails with status code 400 if password is invalid', async () => {
+    const newUser = {
+      username: 'ben',
+      name: 'Jonathan Caburnay',
+      password: 'p3'
+    }
+
+    await api
+      .post('/api/users')
+      .send(newUser)
+      .expect(400)
+
+    const usersAtEnd = await helper.usersInDb()
+    expect(usersAtEnd).toHaveLength(helper.initialUsers.length)
   })
 })
 
