@@ -22,7 +22,17 @@ Content-Type: application/json
 {
     "username": "bin",
     "name": "Jonathan Caburnay",
-    "password": "23"
+    "password": "123"
 }
 ###
 GET http://localhost:3001/api/users
+###
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "New Blog - Full Stack Open 2022 Part 4",
+    "author": "Jonathan Caburnay",
+    "url": "https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-8-4-12",
+    "userId": "628b98f16fbdf0548d723707"
+}
