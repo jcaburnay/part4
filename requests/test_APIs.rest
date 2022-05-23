@@ -36,3 +36,11 @@ Content-Type: application/json
     "url": "https://fullstackopen.com/en/part4/testing_the_backend#exercises-4-8-4-12",
     "userId": "628b98f16fbdf0548d723707"
 }
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "bin",
+    "password": "123"
+}
