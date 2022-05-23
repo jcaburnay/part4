@@ -50,7 +50,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJpbiIsImlkIjoiNjI4Yjk4ZjE2ZmJkZjA1NDhkNzIzNzA3IiwiaWF0IjoxNjUzMzIxNDQzfQ.VSmHBSo2sBc3WQRdbAUNk0CAKNFtne1TGK91pqoagWU
 
 {
-    "title": "Another blog by bin",
+    "title": "Refactored getTokenFrom",
     "author": "Jonathan Caburnay",
     "url": "https://fullstackopen.com/en/part4/token_authentication#exercises-4-15-4-23"
 }
