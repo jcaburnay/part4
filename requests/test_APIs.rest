@@ -47,13 +47,13 @@ Content-Type: application/json
 ###
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJpbm9uZyIsImlkIjoiNjI4YmNjYWYzMzk5YTg1M2VkZmU3NzAwIiwiaWF0IjoxNjUzMzI5MDc5LCJleHAiOjE2NTMzMzI2Nzl9.q9zZgRe03DKtQW8P_ALRg1VBj22d8zARD19dzx3stRc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6IjYyOGJjYzc1MzM5OWE4NTNlZGZlNzZmMSIsImlhdCI6MTY1MzQwMjM1OSwiZXhwIjoxNjUzNDA1OTU5fQ.RbHMNTEvLNmN_fvr89T9myemYD-Sb4iPDJdKQdzuofw
 
 {
-    "title": "Blog 4 from user binong",
-    "author": "Binong user",
+    "title": "Blog 3 from user test",
+    "author": "Test user",
     "url": "https://fullstackopen.com/en/part4/token_authentication#exercises-4-15-4-23"
 }
 ###
-DELETE http://localhost:3001/api/blogs/628bcccd3399a853edfe7708
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJpbm9uZyIsImlkIjoiNjI4YmNjYWYzMzk5YTg1M2VkZmU3NzAwIiwiaWF0IjoxNjUzMzMwODYzLCJleHAiOjE2NTMzMzQ0NjN9.intQ1sMbDT5V-UhhvrvoayNdscI2z5Y8Sls0ilDrisI
+DELETE http://localhost:3001/api/blogs/628ceae6501cbbc2579379d5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJpbm9uZyIsImlkIjoiNjI4YmNjYWYzMzk5YTg1M2VkZmU3NzAwIiwiaWF0IjoxNjUzNDAyNDUzLCJleHAiOjE2NTM0MDYwNTN9.VbthhRFyCKFpiw7n_kEY67P-nS-fc0iaLvzciYKDYL0
