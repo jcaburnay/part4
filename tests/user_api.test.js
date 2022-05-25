@@ -70,7 +70,7 @@ describe('when there is only one user in db', () => {
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(helper.initialUsers.length)
   })
-})
+}, 100000)
 
 afterAll(() => {
   mongoose.connection.close()

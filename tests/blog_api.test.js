@@ -43,8 +43,15 @@ describe('addition of a new blog', () => {
       likes: 2
     }
 
+    let validUser = {
+      username: 'binong',
+      password: 'correctPassword'
+    }
+    let loginResponse = await api.post('/api/login').send(validUser)
+    const { token } = loginResponse.body
     await api
       .post('/api/blogs')
+      .set('Authorization', `Bearer ${token}`)
       .send(newBlog)
       .expect(201)
       .expect('Content-Type', /application\/json/)
@@ -54,6 +61,27 @@ describe('addition of a new blog', () => {
 
     const titles = blogs.map((n) => n.title)
     expect(titles).toContain('Me, a former physicist, just launched my first project using Elixir and Phoenix.')
+  })
+
+  test('addition of new blog without token returns status code 401', async () => {
+    const newBlog = {
+      title: 'Me, a former physicist, just launched my first project using Elixir and Phoenix.',
+      author: 'Felipe Lincoln',
+      url: 'https://dev.to/felipelincoln/me-a-former-physicist-just-launched-my-first-project-using-elixir-and-phoenix-8k',
+      likes: 2
+    }
+
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(401)
+      .expect('Content-Type', /application\/json/)
+
+    const blogs = await helper.blogsInDb()
+    expect(blogs).toHaveLength(helper.initialBlogs.length)
+
+    const titles = blogs.map((n) => n.title)
+    expect(titles).not.toContain('Me, a former physicist, just launched my first project using Elixir and Phoenix.')
   })
 
   test('no likes property in request', async () => {
